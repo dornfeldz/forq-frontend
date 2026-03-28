@@ -61,7 +61,6 @@ function Dashboard() {
     useEffect(() => {
         const fetchUser = async () => {
             const token = await getToken()
-            console.log(token)
             const res = await fetch(`${import.meta.env.VITE_NODE_API_URL}/user/me`, {
                 headers: { Authorization: `Bearer ${token}` }
             })

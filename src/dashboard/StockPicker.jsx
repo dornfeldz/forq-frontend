@@ -3,7 +3,7 @@ import { useAuth } from '@clerk/clerk-react'
 
 const ALL_STOCKS = ['AAPL', 'MSFT', 'NVDA', 'AMZN', 'GOOG', 'META']
 
-function StockPicker({ isPremium, selectedStocks, onStocksChange }) {
+function StockPicker({ isPremium, selectedStocks = [], onStocksChange }) {
     const [error, setError] = useState(null)
 
     const { getToken } = useAuth();
