@@ -11,7 +11,7 @@ function LandingPage() {
 
             {/* NAVBAR */}
             <div className="flex justify-between items-center px-6 py-4 border-b border-zinc-800">
-                <h1 className="text-lg font-semibold">StockAI</h1>
+                <h1 className="text-lg font-semibold">Forq</h1>
 
                 <div className="flex gap-3">
                     <SignInButton mode="modal">

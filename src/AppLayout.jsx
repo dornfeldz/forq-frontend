@@ -6,7 +6,7 @@ function AppLayout() {
         <div className="min-h-screen bg-zinc-950 text-white">
             <div className="border-b border-zinc-800 px-6 py-4 flex justify-between items-center">
                 <h1 className="text-xl font-semibold tracking-wide">
-                    Vestr
+                    Forq
                 </h1>
                 <div className="text-sm text-zinc-400">
                     Dashboard
