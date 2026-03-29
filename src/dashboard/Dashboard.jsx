@@ -8,6 +8,8 @@ function Dashboard() {
     const [data, setData] = useState(null)
     const [isPremium , setIsPremium] = useState(false);
     const [stocks, setStocks] = useState([]);
+    const [marketData, setMarketData] = useState([])
+    const [marketLoading, setMarketLoading] = useState(true)
     const { getToken } = useAuth();
     const { userId } = useAuth()
 
@@ -40,23 +42,19 @@ function Dashboard() {
     }
 
     useEffect(() => {
-        const fetchData = async () => {
-            const token = await getToken();
+        const fetchMarket = async () => {
             try {
-                const res = await fetch(`${import.meta.env.VITE_NODE_API_URL}/predictions?tickers=${stocks.join(',')}`,{
-                    headers: {
-                        Authorization: `Bearer ${token}`,
-                    },
-                },);
-                const data = await res.json();
-                setData(data);
-            } catch (error) {
-                console.error(error);
+                const res = await fetch(`${import.meta.env.VITE_NODE_API_URL}/market`)
+                const data = await res.json()
+                setMarketData(data)
+            } catch (err) {
+                console.error(err)
+            } finally {
+                setMarketLoading(false)
             }
-        };
-
-        fetchData();
-    }, []);
+        }
+        fetchMarket()
+    }, [])
 
     useEffect(() => {
         const fetchUser = async () => {
@@ -87,7 +85,6 @@ function Dashboard() {
         fetchData()
     }, [stocks]) // reruns whenever stocks change
 
-    if (!data) return <p>Loading...</p>
     return (
         <div className="space-y-8">
             <div>
@@ -114,12 +111,12 @@ function Dashboard() {
                     }
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                    {[
-                        { name: "S&P 500", value: "5,234.18", change: "+1.24%", positive: true },
-                        { name: "NASDAQ", value: "16,428.82", change: "+1.56%", positive: true },
-                        { name: "DOW", value: "39,512.84", change: "-0.32%", positive: false },
-                        { name: "Market Status", value: "Closed", change: "", positive: null },
-                    ].map((item, i) => (
+                    {marketLoading ? (
+                        [1,2,3,4].map(i => (
+                            <div key={i} className="bg-zinc-900 border border-zinc-800 rounded-xl p-5 h-24 animate-pulse" />
+                        ))
+                    ) : (
+                        marketData.map((item, i) => (
                         <div
                             key={i}
                             className="bg-zinc-900 border border-zinc-800 rounded-xl p-5 flex flex-col gap-2"
@@ -142,7 +139,7 @@ function Dashboard() {
                                 )}
                             </div>
                         </div>
-                    ))}
+                    )))}
                 </div>
             </div>
 

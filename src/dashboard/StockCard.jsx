@@ -65,11 +65,6 @@ function StockCard({ data }) {
                         {percent.toFixed(2)}%
                     </p>
                 </div>
-
-                <div className="text-right">
-                    <p className="text-zinc-500 text-xs">Confidence</p>
-                    <p className="font-medium text-zinc-300">~80%</p>
-                </div>
             </div>
         </div>
     );
