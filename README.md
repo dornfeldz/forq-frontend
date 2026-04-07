@@ -1,12 +1,14 @@
-Node.js backend for [Forq](https://forq.online) — a stock price forecasting SaaS. Handles authentication, user management, subscription billing, and acts as the API gateway between the frontend and the ML service.
+React frontend for [Forq](https://forq.online) — a stock price forecasting SaaS that uses an LSTM neural network to generate 5-day price predictions.
 
 ## Tech stack
 
-- Node.js + Express
-- Prisma v7 (PostgreSQL)
-- Clerk — token verification
-- Stripe — subscription lifecycle via webhooks
+- React (deployed on Vercel)
+- Clerk — authentication and session management
+- Stripe — subscription checkout and billing portal
 
-## Architecture
+## Features
 
-This service sits between the React frontend and the FastAPI ML service. It verifies Clerk JWTs, manages user and subscription state in PostgreSQL, and proxies prediction requests to the ML service.
+- Sign up / sign in via Clerk
+- Dashboard to track selected stocks (1 for free tier, up to 6 for premium)
+- 5-day price prediction charts powered by the ML service
+- Subscription management via Stripe
