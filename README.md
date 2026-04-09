@@ -1,16 +1,14 @@
-# React + Vite
+React frontend for [Forq](https://forq.online) — a stock price forecasting SaaS that uses an LSTM neural network to generate 5-day price predictions.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Tech stack
 
-Currently, two official plugins are available:
+- React (deployed on Vercel)
+- Clerk — authentication and session management
+- Stripe — subscription checkout and billing portal
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Features
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- Sign up / sign in via Clerk
+- Dashboard to track selected stocks (1 for free tier, up to 6 for premium)
+- 5-day price prediction charts powered by the ML service
+- Subscription management via Stripe
